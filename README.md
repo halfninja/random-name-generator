@@ -27,3 +27,10 @@ This is a silly little library for generating real-ish names. By real, I mean th
 It's for a game that needs everyone to have names. If you want to extend the current English-ish
 name generator, or want to contribute a different generator, feel free to fork. The generator API
 gives access to the mother and father names, so it could generate matronymics and patronymics.
+
+Building 
+--------
+
+Get [SBT][1] and run `sbt package`.
+
+[1]: http://www.scala-sbt.org/download.html
