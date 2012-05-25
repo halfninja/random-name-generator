@@ -43,8 +43,8 @@ public class EnglishlikeNameGenerator implements NameGenerator {
 
 	@Override
 	public Name generate(Gender gender, Name mother, Name father) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO inherit surname
+		return generate(gender);
 	}
 
 }
