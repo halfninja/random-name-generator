@@ -14,8 +14,8 @@ class EnglishlikeNameGenerator extends NameGenerator {
 
 		val baseFamilyName = random(LastNames)
 		val familyName = random.nextInt(15) match {
-			case 0 => baseFamilyName + "son"
-			case 1 => baseFamilyName + "ton"
+			case 0 if !baseFamilyName.endsWith("on") => baseFamilyName + "son"
+			case 1 if !baseFamilyName.endsWith("on") => baseFamilyName + "ton"
 			case 2 => random(MaleGivenNames)
 			case 3 => baseFamilyName + "-" + random(LastNames)
 			case 4 => baseFamilyName + "ford"
@@ -36,16 +36,23 @@ class EnglishlikeNameGenerator extends NameGenerator {
 object EnglishlikeNameGenerator {
 
 	val MaleGivenNames = Seq(
-		"Kevin","Dave","David","Alan","Derek","Paul","Nick","Mark","Sam","Dan","Robert","Gavin","Terry","Barry","Rahul","Steve","John","Naeem","Harris"
+		"David", "James", "Andrew",	"John", "Michael", "Paul", "Matthew", "Mark", "Chris", "Richard",
+		"Tom", "Alex", "Daniel", "Peter", "Ben", "Robert", "Christopher", "Thomas", "Stephen", "Adam",
+		"Simon", "Jonathan", "Ian", "Jack", "Sam", "Martin", "Matt", "George", "Nick", "Joe"
 	)
 
 	val FemaleGivenNames = Seq(
-		"Natalie","Sarah","Deidre","Gladys","Penny","Rebecca","Grace","Kelly","Sally","Maggie","Kate","Kathryn"
+		"Sarah", "Emma", "Laura", "Rachel", "Helen", "Claire", "Emily", "Hannah", "Rebecca", "Sophie",
+		"Charlotte", "Anna", "Lucy", "Amy", "Catherine", "Jennifer", "Katie", "Jane", "Kate", "Elizabeth",
+		"Julie", "Louise", "Susan", "Maria", "Karen", "Caroline", "Alison", "Lisa", "Nicola", "Jessica"
 	)
 
 	val LastNames = Seq(
-		"Jones","Smith","Baker","Havilland","Partridge","Rogers","Magnets","Trains","Rafferty","O'Toole","Hattes","Borde","Thorpe","Gravis","Twerp","Dingle","Schist",
-		"Granite","Evans","Gravel","Doon","Yaris","Corby","Toast","Greens","Havers"
+		"Smith", "Jones", "Patel", "Williams", "Brown", "Davies", "Taylor", "Lee", "Evans", "Harris", "Shah", 
+		"White", "Wilson", "Johnson", "Khan", "Clarke", "Thomas", "Lewis", "Roberts", "Walker", "Thompson", 
+		"Wright", "Edwards", "Davis", "Moore", "Ward", "Chan", "Cooper", "Green", "Robinson", "King", "Turner", 
+		"Jackson", "Wood", "Hughes", "Martin", "Baker", "Hall", "Bennett", "Mitchell", "Shaw", "Hill", "Clark", 
+		"Parker", "Watson", "Scott", "James", "Wong", "Morris", "Cox"
 	)
 
 }
