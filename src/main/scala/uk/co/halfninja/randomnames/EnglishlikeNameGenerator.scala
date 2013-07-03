@@ -1,23 +1,24 @@
 package uk.co.halfninja.randomnames
 
-import uk.co.halfninja.randomnames.Randomness._
-
 class EnglishlikeNameGenerator extends NameGenerator {
 	import EnglishlikeNameGenerator._
+	import Randomness.JRandom
 
-	override def generate(gender: Gender) = {
+	override def generate(gender: Gender): Name = generate(gender, Randomness.random())
+	override def generate(gender: Gender, seed: Long): Name = generate(gender, Randomness.random(seed))
+	private def generate(gender: Gender, random: JRandom): Name = {
 		val firstName = gender match {
-			case Gender.male => random(MaleGivenNames)
-			case Gender.female => random(FemaleGivenNames)
+			case Gender.male => Randomness.random(MaleGivenNames, random)
+			case Gender.female => Randomness.random(FemaleGivenNames, random)
 			case _ => throw new IllegalArgumentException("Non-specific genders are not supported")
 		}
 
-		val baseFamilyName = random(LastNames)
+		val baseFamilyName = Randomness.random(LastNames, random)
 		val familyName = random.nextInt(15) match {
 			case 0 if !baseFamilyName.endsWith("on") => baseFamilyName + "son"
 			case 1 if !baseFamilyName.endsWith("on") => baseFamilyName + "ton"
-			case 2 => random(MaleGivenNames)
-			case 3 => baseFamilyName + "-" + random(LastNames)
+			case 2 => Randomness.random(MaleGivenNames, random)
+			case 3 => baseFamilyName + "-" + Randomness.random(LastNames, random)
 			case 4 => baseFamilyName + "ford"
 			case 5 => baseFamilyName + "ham"
 			case _ => baseFamilyName
@@ -26,9 +27,11 @@ class EnglishlikeNameGenerator extends NameGenerator {
 		Name(firstName, familyName)
 	}
 
-	override def generate(gender: Gender, mother: Name, father: Name) = {
+	override def generate(gender: Gender, mother: Name, father: Name): Name = generate(gender, mother, father, Randomness.random())
+	override def generate(gender: Gender, mother: Name, father: Name, seed: Long): Name = generate(gender, mother, father, Randomness.random(seed))
+	private def generate(gender: Gender, mother: Name, father: Name, random: JRandom): Name = {
 		// TODO inherit surname
-		generate(gender)
+		generate(gender, random)
 	}
 
 }
