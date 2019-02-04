@@ -163,3 +163,15 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+/target
+
+/.idea/*
+!/.idea/misc.xml
+!/.idea/codeStyles
+!/.idea/modules.iml
+!/.idea/modules/*.iml
+!/.idea/codeStyleSettings.xml
+
+/project/target
+/project/project/target
