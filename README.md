@@ -31,6 +31,4 @@ gives access to the mother and father names, so it could generate matronymics an
 Building 
 --------
 
-Get [SBT][1] and run `sbt package`.
-
-[1]: http://www.scala-sbt.org/download.html
+Requires Java 17+. Run `./gradlew build` to compile and test.
