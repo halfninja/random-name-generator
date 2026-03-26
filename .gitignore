@@ -1,4 +1,6 @@
-/target
+# Gradle
+.gradle/
+build/
 
 #################
 ## Eclipse
@@ -172,6 +174,3 @@ pip-log.txt
 !/.idea/modules.iml
 !/.idea/modules/*.iml
 !/.idea/codeStyleSettings.xml
-
-/project/target
-/project/project/target
